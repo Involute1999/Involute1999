@@ -89,7 +89,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">2k</span>
+            <span class="post-count">2.6k</span>
         </span>
     </span>
 
@@ -98,7 +98,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">8 min</span>
+            <span class="post-count">10 min</span>
         </span>
     </span>
 </div>
@@ -114,7 +114,7 @@
     <div class="article-entry" itemprop="articleBody">
        
   <p><strong>手眼标定</strong>——使得相机（即机器人的眼）与机器人（即机器人的手）坐标系之间建立关系（转换矩阵）</p>
-<p><img src="手眼标定/手眼系统.png" alt="手眼系统" style="zoom:48%;" /></p>
+<p><img src="/2023/05/05/%E6%89%8B%E7%9C%BC%E6%A0%87%E5%AE%9A/手眼系统.png" alt="手眼系统" style="zoom:48%;"></p>
 <center>手眼系统</center>
 
 <ul>
@@ -130,15 +130,15 @@ M_1 = \left[\begin{matrix}f_x & 0 & c_x &0 \\0 & f_y & c_y &0\\0 & 0 & 1 &0\end{
 <script type="math/tex; mode=display">
 M_2 = \left[\begin{matrix}R&T\\0&1\end{matrix}\right]</script></li>
 </ul>
-<p><img src="手眼标定/标定板.png" alt="标定板" style="zoom:33%;" /></p>
+<p><strong>张正友标定法</strong>——该方法是张正友[1]在2000年提出的介于摄影测量和自标定方法之间的相机标定方法，该方法既克服了摄影标定法需要的高精度三维标定物的缺点，又解决了自标定法鲁棒性差的难题。该方法利用一个平面标定板，依靠<strong>单应模型</strong>实现求解相机内外参数</p>
+<p><img src="/2023/05/05/%E6%89%8B%E7%9C%BC%E6%A0%87%E5%AE%9A/标定板.png" alt="标定板" style="zoom:33%;"></p>
 <center>棋盘格标定板</center>
 
-<p><strong>张正友标定法</strong>——该方法是张正友[1]在2000年提出的介于摄影测量和自标定方法之间的相机标定方法，该方法既克服了摄影标定法需要的高精度三维标定物的缺点，又解决了自标定法鲁棒性差的难题。该方法利用一个平面标定板，依靠<strong>单应模型</strong>实现求解相机内外参数</p>
 <h3 id="单应模型"><a href="#单应模型" class="headerlink" title="单应模型"></a>单应模型</h3><p>相机的成像过程是将真实世界中的三维信息以投影变换的方式映射到二维平面图像的过程</p>
-<p><img src="手眼标定\图2.1 相机成像过程.png" alt="图2.1 相机成像过程" style="zoom:75%;" /></p>
+<p><img src="/2023/05/05/%E6%89%8B%E7%9C%BC%E6%A0%87%E5%AE%9A/图2.1 相机成像过程.png" alt="图2.1 相机成像过程" style="zoom:75%;"></p>
 <center>相机成像过程</center>
 
-<p>​                                                                     <img src="手眼标定/相机成像模型.png" alt="  " style="zoom:75%;" /></p>
+<p>​                                                                     <img src="/2023/05/05/%E6%89%8B%E7%9C%BC%E6%A0%87%E5%AE%9A/相机成像模型.png" alt="  " style="zoom:75%;"></p>
 <center>相机成像模型</center>
 
 <ul>
@@ -159,7 +159,7 @@ M_2 = \left[\begin{matrix}R&T\\0&1\end{matrix}\right]</script></li>
 \left[\begin{matrix}R & T \\0 & 1 \\\end{matrix}\right] 
 \left[\begin{matrix}x_w \\y_w \\z_w \\1\end{matrix}\right]</script><p><strong>（2）从相机坐标系到理想成像平面坐标系（不考虑畸变）</strong></p>
 <p>该变换可以视为简单的映射变换，将三维坐标变换为二维坐标，其中f为相机的焦距。如图1.5所示，通过相似三角形，可得比例关系。</p>
-<p><img src="手眼标定/点P成像过程在x轴与y轴上的投影分量.png" alt="点P成像过程在x轴与y轴上的投影分量" style="zoom:35%;" /></p>
+<p><img src="/2023/05/05/%E6%89%8B%E7%9C%BC%E6%A0%87%E5%AE%9A/点P成像过程在x轴与y轴上的投影分量.png" alt="点P成像过程在x轴与y轴上的投影分量" style="zoom:35%;"></p>
 <center>点P成像过程在x轴与y轴上的投影分量</center>
 
 <script type="math/tex; mode=display">
@@ -171,7 +171,7 @@ M_2 = \left[\begin{matrix}R&T\\0&1\end{matrix}\right]</script></li>
 \left[\begin{matrix}\frac{f}{z_c} & 0 & c_x &0 \\0 & \frac{f}{z_c} & c_y &0\\0 & 0 & \frac{1}{z_c} &0\end{matrix}\right] 
 \left[\begin{matrix}x_w \\y_w \\z_w \\1\end{matrix}\right]</script><p><strong>（3）从理想成像平面坐标系到实际成像平面坐标系（考虑畸变）</strong></p>
 <p>在相机的成像模型中，有少量的光线通过小孔，这就导致了因为曝光不足而使得图像生成的速度减慢。为了使得快速成像，需要使用透镜将光线聚集到投影点上，但是引入透镜的代价就是在成像模型中加入了畸变。透镜畸变包括<strong>径向畸变</strong>$dr$和<strong>切向畸变</strong>$dt$。</p>
-<p><img src="手眼标定/畸变参数.png" alt="畸变参数" style="zoom:45%;" /></p>
+<p><img src="/2023/05/05/%E6%89%8B%E7%9C%BC%E6%A0%87%E5%AE%9A/畸变参数.png" alt="畸变参数" style="zoom:45%;"></p>
 <center>相机畸变</center>
 
 <ul>
@@ -185,7 +185,7 @@ x_{corrected} = x+[2p_1xy+p_2(r^2+2x^2)] \\
 y_{corrected} = y+[2p_1(r^2+2y^2)+p_2xy]</script></li>
 </ul>
 <p><strong>(4）从实际成像平面坐标系到图像坐标系</strong></p>
-<p><img src="手眼标定/像素坐标系与图像坐标系.png" alt="像素坐标系与图像坐标系" style="zoom:60%;" /></p>
+<p><img src="/2023/05/05/%E6%89%8B%E7%9C%BC%E6%A0%87%E5%AE%9A/像素坐标系与图像坐标系.png" alt="像素坐标系与图像坐标系" style="zoom:60%;"></p>
 <center>像素坐标系与图像坐标系</center>
 
 <p>由于定义的像素坐标系原点与图像坐标系原点不重合，假设像素坐标系原点在图像坐标系下的坐标为$(c_x,c_y)$，每个像素点在图像坐标系x轴、y轴方向的尺寸为：$d_x,d_y$，于是可得到像素点在像素坐标系下的坐标为：</p>
@@ -202,10 +202,10 @@ z_c\left[\begin{matrix}u_f \\v_f \\1\end{matrix}\right]
 = 
 \left[\begin{matrix}f_x & 0 & c_x &0 \\0 & f_y & c_y &0\\0 & 0 & 1 &0\end{matrix}\right] \left[\begin{matrix}R & T \\0 & 1 \\\end{matrix}\right] \left[\begin{matrix}x_w \\y_w \\z_w \\1\end{matrix}\right]
 =
-M_1M_2\left[\begin{matrix}x_w\\ y_w \\z_w\\1\end{matrix}\right]</script><p>相机的内外参数是通过<strong>标定板上每个角点的世界坐标与图像坐标系下的坐标之间的对应关系</strong>计算得出。（cv2.calibrateCamera）</p>
-<p><img src="手眼标定/cv2.calibrateCamera函数.png" alt="cv2.calibrateCamera函数" style="zoom:50%;" /></p>
+M_1M_2\left[\begin{matrix}x_w\\ y_w \\z_w\\1\end{matrix}\right]</script><p>相机的内外参数是通过<strong>标定板上每个角点的世界坐标与图像坐标系下的坐标之间的对应关系</strong>计算得出（<code>cv2.calibrateCamera</code>）。</p>
+<p><img src="/2023/05/05/%E6%89%8B%E7%9C%BC%E6%A0%87%E5%AE%9A/cv2.calibrateCamera函数.png" alt="cv2.calibrateCamera函数" style="zoom:50%;"></p>
 <ul>
-<li>对于图像坐标系下2D 图像点，Harries通过局部灰度图像的变化程度来提取角点。（cv2.findChessboardCorners）</li>
+<li>对于图像坐标系下2D 图像点，Harries通过局部灰度图像的变化程度来提取角点（<code>cv2.findChessboardCorners</code>）。。</li>
 <li>对于3D现实世界点，为了简单起见，确保棋盘格在XY平面上保持静止，因此Z始终为0。对于 X,Y 值，根据棋盘格中正方形的大小（比如 30 毫米），将角点坐标记为 (0,0),(30,0),(60,0),…，最终得到以毫米为单位的结果。</li>
 </ul>
 <p>将旋转矩阵Ｒ转换为旋转向量的形式</p>
@@ -217,7 +217,7 @@ z_c\left[\begin{matrix}u_f \\v_f \\1\end{matrix}\right]
 \left[\begin{matrix}f_x & 0 & c_x &0 \\0 & f_y & c_y &0\\0 & 0 & 1 &0\end{matrix}\right] \left[\begin{matrix}R & T \\0 & 1 \\\end{matrix}\right] \left[\begin{matrix}x_w \\y_w \\0 \\1\end{matrix}\right]
 =
 M_1\left[\begin{matrix}r_1&r_2&T\end{matrix}\right]\left[\begin{matrix}x_w\\ y_w \\1\end{matrix}\right]</script><p><strong>H为从标定板世界坐标系到相机图像坐标系的单应性矩阵，单应性矩阵Ｈ的计算就是将标定板的角点坐标与标点板图像的角点坐标对应联系起来。</strong></p>
-<h2 id="2-手眼标定"><a href="#2-手眼标定" class="headerlink" title="2 手眼标定"></a>2 手眼标定</h2><p><img src="手眼标定/眼在手上坐标系模型.png" alt="图2.7 “眼在手上”坐标系模型" style="zoom:75%;" /></p>
+<h2 id="2-手眼标定"><a href="#2-手眼标定" class="headerlink" title="2 手眼标定"></a>2 手眼标定</h2><p><img src="/2023/05/05/%E6%89%8B%E7%9C%BC%E6%A0%87%E5%AE%9A/眼在手上坐标系模型.png" alt="图2.7 “眼在手上”坐标系模型" style="zoom:75%;"></p>
 <center>眼在手上坐标系模型</center>
 
 <p>{b}为机械臂基底坐标系，{g}为机械臂末端坐标系，{c}为相机坐标系，{t}为标定板坐标系。根据坐标系变换关系，可以得到，对于每张图片：</p>
@@ -228,7 +228,7 @@ T_t^b=T_g^bT_c^gT_t^c</script><ul>
 <li>$T_c^g$：固定值，相机在机器人末端坐标系下的位姿；</li>
 <li>$T_t^c$：相机在标定板坐标系下的位姿，即外参。</li>
 </ul>
-<p><img src="手眼标定/机械臂在两个不同位姿下的坐标系模型.png" alt="机械臂在两个不同位姿下的坐标系模型" style="zoom:50%;" /></p>
+<p><img src="/2023/05/05/%E6%89%8B%E7%9C%BC%E6%A0%87%E5%AE%9A/机械臂在两个不同位姿下的坐标系模型.png" alt="机械臂在两个不同位姿下的坐标系模型" style="zoom:50%;"></p>
 <center>机械臂不同位姿下的坐标系模型</center>
 
 <p>对于两个不同相机位姿：</p>
@@ -237,7 +237,7 @@ T_{1t}^b=T_{1g}^bT_{1c}^gT_{1t}^c\\
 T_{2t}^b=T_{2g}^bT_{2c}^gT_{2t}^c</script><p>联立可得：</p>
 <script type="math/tex; mode=display">
 T_{1g}^bT_{1c}^gT_{1t}^c=T_{2g}^bT_{2c}^gT_{2t}^c</script><p>进行简单变换：</p>
-<p><img src="手眼标定/ax=xb.png" alt="ax=xb" style="zoom:75%;" /></p>
+<p><img src="/2023/05/05/%E6%89%8B%E7%9C%BC%E6%A0%87%E5%AE%9A/ax=xb.png" alt="ax=xb" style="zoom:75%;"></p>
 <p>以此类推，得到一个经典的方程组<strong>AX=XB</strong>，该方程组里有n-1个方程（n为拍摄标定板图片数量）。其中，X即为手眼矩阵（4x4 齐次变换矩阵），包含六个线性无关的变量，其中旋转3个自由度，平移3个自由度。</p>
 <p>采用<strong>Tais方法</strong>求解AX=XB问题，先求解 RX，再求解TX  。</p>
 <p>具体求解过程可分为以下 7个步骤。</p>
@@ -273,9 +273,45 @@ R_x=(1-\frac{|p_x'|^2}{2})I+\frac{1}{2}(P_xP_X^T+\sqrt4-|p_x'|*skew(p_x))</scrip
 <script type="math/tex; mode=display">
 (R_A-1)T_X=R_XT_B-T_A</script></li>
 </ol>
-<p>基于Tais方法，采用OpenCV中的cv2.calibrateHandEye函数得到相机与机械臂末端之间的位姿关系，即手眼矩阵。</p>
-<p><img src="手眼标定/cv2.calibrateHandEye函数.png" alt="cv2.calibrateHandEye函数" style="zoom:55%;" /></p>
-<p>3 代码实现</p>
+<p>基于Tais方法，采用OpenCV中的<code>cv2.calibrateHandEye</code>函数得到相机与机械臂末端之间的位姿关系，即手眼矩阵。</p>
+<p><img src="/2023/05/05/%E6%89%8B%E7%9C%BC%E6%A0%87%E5%AE%9A/cv2.calibrateHandEye函数.png" alt="cv2.calibrateHandEye函数" style="zoom:55%;"></p>
+<h2 id="3-手眼标定实现"><a href="#3-手眼标定实现" class="headerlink" title="3 手眼标定实现"></a>3 手眼标定实现</h2><p><strong>工具</strong>：</p>
+<ul>
+<li><p>硬件：RealSenseD435；ABB机器人；计算机；棋盘格标定板（11*8，棋盘格大小为30mm）</p>
+</li>
+<li><p>软件：OpenCV；Python</p>
+</li>
+</ul>
+<p><strong>流程</strong>：</p>
+<p>（1）引导机器人在不同视角获取标定板照片，同时采集机械臂末端位姿。</p>
+<p>*注意事项：</p>
+<ul>
+<li>相邻视角的机器人构型差异需要尽可能的大，且不仅要有位置变化，也要有角度变化。</li>
+<li>在拍摄过程中，标定板与相机之间的间距应在相机的有效工作范围内（40cm-55cm），且标定板相对于相机的倾斜角度不要太大，以免影响标定板识别。</li>
+<li>在拍摄过程中，标定板必须完整的在相机视野内。采集的图像(<code>color_images</code>)和机器人姿态(<code>robot.txt</code>)不少于15组。</li>
+</ul>
+<p><img src="/2023/05/05/%E6%89%8B%E7%9C%BC%E6%A0%87%E5%AE%9A/棋盘格.png" alt="棋盘格" style="zoom:30%;"></p>
+<center>拍摄棋盘格</center>
+
+<p>（2）利用相机标定，获取相机内参及标定板相对于相机的位姿信息。</p>
+<p>对于图像坐标系下2D 图像点，Harries通过局部灰度图像的变化程度来提取角点（<code>cv2.findChessboardCorners</code>）。</p>
+<p><img src="/2023/05/05/%E6%89%8B%E7%9C%BC%E6%A0%87%E5%AE%9A/标定角点.png" alt="标定角点" style="zoom:30%;"></p>
+<p>（3）利用手眼标定，求解手眼标定矩阵。</p>
+<h2 id="4-学习"><a href="#4-学习" class="headerlink" title="4 学习"></a>4 学习</h2><p><strong>学习：关于手眼标定</strong><br>(1) <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/76578691">https://zhuanlan.zhihu.com/p/76578691</a><br>(2) 邱强博士公众号的科普文章：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzA5MDE2MjQ0OQ==&amp;mid=2652786821&amp;idx=1&amp;sn=297af3939075dbc926e6d785911104e9&amp;chksm=8be524fbbc92aded68bacb1766df0a17127a96f22e1e39199f554b51511a1a9dae4a639810ef&amp;mpshare=1&amp;scene=1&amp;srcid=0426nosAwZ2KxLhhosZNNiDC&amp;sharer_sharetime=1619431979236&amp;sharer_shareid=959b307da27acf49e12dabf29b5eabb3&amp;key=573846e64b47b6602727d16daf724d5a92749e47e815d6be8d660e48739a90286b07e8f75bf2d3df77151bf7b95b4d72abf2cc3738fedc00f6f0b531200abfb06f3cb72c9e37bed5bec3e71d2da42457df91ff0a3b3698867efd34cdbf933c32896b6d1822fee5af7e3273787354a3c69c2868bbec5a7ccde93171c226f17d3c&amp;ascene=1&amp;uin=MTQ3MTU2MDYzMg%3D%3D&amp;devicetype=Windows+10+x64&amp;version=62090538&amp;lang=zh_CN&amp;exportkey=AZi3wpEeZnhHgwp4EshiZ40%3D&amp;pass_ticket=SKKMb%2B5MPe8YvElQWav3ndG7x6lcfRfkNTFMhNXZOWTL2%2B881%2Bgzh8BMr5rZs6Hz&amp;wx_header=0">https://mp.weixin.qq.com/s?__biz=MzA5MDE2MjQ0OQ==&amp;mid=2652786821&amp;idx=1&amp;sn=297af3939075dbc926e6d785911104e9&amp;chksm=8be524fbbc92aded68bacb1766df0a17127a96f22e1e39199f554b51511a1a9dae4a639810ef&amp;mpshare=1&amp;scene=1&amp;srcid=0426nosAwZ2KxLhhosZNNiDC&amp;sharer_sharetime=1619431979236&amp;sharer_shareid=959b307da27acf49e12dabf29b5eabb3&amp;key=573846e64b47b6602727d16daf724d5a92749e47e815d6be8d660e48739a90286b07e8f75bf2d3df77151bf7b95b4d72abf2cc3738fedc00f6f0b531200abfb06f3cb72c9e37bed5bec3e71d2da42457df91ff0a3b3698867efd34cdbf933c32896b6d1822fee5af7e3273787354a3c69c2868bbec5a7ccde93171c226f17d3c&amp;ascene=1&amp;uin=MTQ3MTU2MDYzMg%3D%3D&amp;devicetype=Windows+10+x64&amp;version=62090538&amp;lang=zh_CN&amp;exportkey=AZi3wpEeZnhHgwp4EshiZ40%3D&amp;pass_ticket=SKKMb%2B5MPe8YvElQWav3ndG7x6lcfRfkNTFMhNXZOWTL2%2B881%2Bgzh8BMr5rZs6Hz&amp;wx_header=0</a></p>
+<p><strong>相机标定</strong>：OpenCV 中的实例：<a target="_blank" rel="noopener" href="https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_calib3d/py_calibration/py_calibration.html#calibration">https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_calib3d/py_calibration/py_calibration.html#calibration</a>     了解相机内参，外参。</p>
+<p><strong>手眼标定</strong>：B站教程—<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1By4y1b7Q7/?spm_id_from=333.788.recommend_more_video.-1">https://www.bilibili.com/video/BV1By4y1b7Q7/?spm_id_from=333.788.recommend_more_video.-1</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1ey4y1b76c/?spm_id_from=333.788.recommend_more_video.0">https://www.bilibili.com/video/BV1ey4y1b76c/?spm_id_from=333.788.recommend_more_video.0</a></p>
+<p><strong>两个重要函数</strong>：</p>
+<p>1 <code>ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, imgpoints, gray.shape[::-1],None,None)</code></p>
+<p><code>mtx</code>:相机内参     <code>dist</code> :相机畸变矩阵    <code>rvecs</code>:外参旋转矩阵    <code>tvecs</code>:外参位移矩阵</p>
+<p><code>objpoints</code>:实际三维点    <code>imgpoints</code>:图片像素点    <code>gray.shape[::-1]</code>:图片大小</p>
+<p>2 <code>R_cam2gripper,T_cam2gripper=cv2.calibrateHandEye(R_gripper2base,T_gripper2base,rot_mats,tvecs,None,None,cv2.CALIB_HAND_EYE_TSAI)</code></p>
+<p><code>R_cam2gripper</code>:手眼旋转矩阵    <code>T_cam2gripper</code>:手眼位移矩阵</p>
+<p><code>R_gripper2base</code>:机械臂末端旋转矩阵    <code>T_gripper2base</code>:机械臂末端位移矩阵</p>
+<p><code>rot_mats</code>:外参旋转矩阵    <code>tvecs</code>:外参位移矩阵</p>
+<p><code>cv2.CALIB_HAND_EYE_TSAI</code>:计算方法</p>
+<p><strong>opencv安装</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install python3-opencv</span><br></pre></td></tr></table></figure>
  
       <!-- reward -->
       
@@ -358,6 +394,15 @@ R_x=(1-\frac{|p_x'|^2}{2})I+\frac{1}{2}(P_xP_X^T+\sqrt4-|p_x'|*skew(p_x))</scrip
 
    
   <nav class="article-nav">
+    
+      <a href="/2023/05/06/PCL%E5%AE%89%E8%A3%85-%E5%AD%A6%E4%B9%A0/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            PCL安装-学习
+          
+        </div>
+      </a>
     
     
       <a href="/2023/04/30/hello-world/" class="article-nav-link">
